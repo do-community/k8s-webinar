@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2019-12-04T10:51:35Z"
+  labels:
+    run: nginx-pod
+  name: nginx-pod
+  namespace: default
+  resourceVersion: "7716200"
+  selfLink: /api/v1/namespaces/default/pods/nginx-pod
+  uid: c557ddbd-9007-42d0-a1a5-e9c0167566e9
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: Always
+    name: nginx-pod
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-tlplm
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: pool-dntnlxlag-67kk
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-tlplm
+    secret:
+      defaultMode: 420
+      secretName: default-token-tlplm
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2019-12-04T10:51:36Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2019-12-04T10:51:45Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2019-12-04T10:51:45Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2019-12-04T10:51:35Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://41c07c461db44b57c58d2546554ab089d70359520996fbb47099c1119787a834
+    image: nginx:latest
+    imageID: docker-pullable://nginx@sha256:50cf965a6e08ec5784009d0fccb380fc479826b6e0e65684d9879170a9df8566
+    lastState: {}
+    name: nginx-pod
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: "2019-12-04T10:51:44Z"
+  hostIP: 10.130.41.188
+  phase: Running
+  podIP: 10.244.0.169
+  qosClass: BestEffort
+  startTime: "2019-12-04T10:51:36Z"
