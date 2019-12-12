@@ -1,0 +1,32 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: nginx-nodeantiaffinity
+  labels:
+    app: nginx
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.15
+        ports:
+        - containerPort: 80
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution: 
+          - weight: 1
+            preference:          
+              matchExpressions: 
+              - key: type
+                operator: NotIn 
+                values:
+                - cpu-opt
+
